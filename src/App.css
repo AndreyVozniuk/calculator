@@ -1,0 +1,100 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+}
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator{
+  width: 35%;
+  height: 80%;
+  margin-top: -50px;
+}
+
+.result{
+  max-width: 100%;
+  height: 25%;
+  color: rgb(255, 255, 255);
+  text-align: right;
+  font-size: 75px;
+  background: rgb(38, 44, 58);
+  position: relative;
+}
+
+.result >:nth-child(1){
+  font-size: 15px;
+  margin-right: 21px;
+  padding-top: 15px;
+  color: #7D8089;
+}
+
+.result >:nth-child(2){
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 90%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.buttons{
+  width: 100%;
+  height: 85%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.button{
+  font-size: 25px;
+  border: 1px solid rgb(56, 66, 88);
+  background: rgb(38, 44, 58);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.button:hover{
+  opacity: 0.8;
+}
+
+.btn-pink{
+  background-color: rgb(255, 97, 134)!important;
+  border: none!important;
+}
+
+.btn-yellow{
+  background-color: rgb(255, 182, 95)!important;
+  border: none!important;
+}
+
+.last-el{
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+/* scrollbar settings */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1); 
+}
