@@ -1,5 +1,5 @@
-# Calcualtor
+# Calcualtor [React]
 
-This project is written on React. Simple calculator =).
+Simple calculator =).
 
 ![alt text]('./img/photo-app.png')
