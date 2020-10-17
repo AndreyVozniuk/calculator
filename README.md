@@ -2,4 +2,4 @@
 
 Simple calculator =).
 
-![app picture]('../master/img/photo-app.png')
+![app picture]('img/photo-app.png')
