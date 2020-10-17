@@ -2,4 +2,4 @@
 
 Simple calculator =).
 
-![alt text]('./img/photo-app.png')
+![alt text]('https://github.com/AndreyVozniuk/calculator/blob/master/img/photo-app.png')
