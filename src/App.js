@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {negativeNumber} from './helper'
 import './App.css'
 
 const calcLayout = [
@@ -13,18 +12,16 @@ const calcLayout = [
 const initialExpression = {
   rNum: '',
   lNum: '', 
-  calculationSymbol: '' 
+  mathSymbol: '' 
 }
-
-const calculationSymbols = ['+', '-', '×', '÷']
 
 function App() {
   const [expression, setExpression] = useState(initialExpression)
   const [inputNum, setInputNum] = useState('0')
 
-  function determineExpression(calculationSymbol) {
+  function determineExpression(mathSymbol) {
     if(!expression.lNum){
-      setExpression({rNum: '0', lNum:inputNum, calculationSymbol})
+      setExpression({rNum: '0', lNum:inputNum, mathSymbol})
       setInputNum('0')
     }
   }
@@ -32,9 +29,8 @@ function App() {
   function calcResult(){
     let result
     if(expression.rNum && expression.lNum){
-      switch (expression.calculationSymbol) {
+      switch (expression.mathSymbol) {
         case '+':
-          console.log('case', '+')
           result = Number(expression.lNum) + Number(inputNum)
           break
         case '-':
@@ -47,7 +43,7 @@ function App() {
           result = Number(expression.lNum) / Number(inputNum)
           break
         default: 
-          return 'unknown calculation symbol'
+          throw new Error('unknown math symbol')
       }
       setInputNum(String(result))
       setExpression(initialExpression)
@@ -55,14 +51,10 @@ function App() {
   }
 
   function onBtnClick(e) {
-    let value = e.target.innerHTML
+    const value = e.target.innerHTML
 
-    if(inputNum === 'Infinity' && value !== 'AC'){   // I don`t confident that is a smart decision :D
+    if(inputNum === 'Infinity' && value !== 'AC'){
       return
-    }
-
-    if(calculationSymbols.includes(value)){
-      value = 'calculationSymbols'
     }
 
     switch (value) {
@@ -74,16 +66,19 @@ function App() {
         inputNum.length > 1 ? setInputNum(inputNum.slice(0, -1)) : setInputNum('0')
         break
       case '-/+':
-        if(inputNum !== '0') setInputNum(negativeNumber(inputNum))
+        if (inputNum !== '0') setInputNum(-Number(inputNum))
         break
       case '.':
-        if(!inputNum.includes('.')) setInputNum(inputNum + value)
+        if (!inputNum.includes('.')) setInputNum(inputNum + value)
         break
       case '=':
         calcResult()
         break
-      case 'calculationSymbols':
-        determineExpression(e.target.innerHTML)
+      case '+':
+      case '-':
+      case '×':
+      case '÷':
+        determineExpression(value)
         break
       default:
         inputNum !== '0' ? setInputNum(inputNum + value) : setInputNum(value)
@@ -98,7 +93,7 @@ function App() {
           <div>
             <span>{expression.lNum}</span> 
             {' '}
-            <span>{expression.calculationSymbol}</span> 
+            <span>{expression.mathSymbol}</span> 
             {' '}
             <span>{expression.lNum ? inputNum : expression.rNum}</span>
           </div>
